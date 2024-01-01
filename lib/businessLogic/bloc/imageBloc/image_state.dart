@@ -9,3 +9,9 @@ class ImagePickedState extends ImageState {
 
   ImagePickedState({this.imagePath});
 }
+
+class ImageCapturedState extends ImageState {
+  File? imagePath;
+
+  ImageCapturedState({this.imagePath});
+}

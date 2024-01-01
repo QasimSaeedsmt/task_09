@@ -1,11 +1,18 @@
-part of 'audio_bloc.dart';
+import 'package:just_audio/just_audio.dart';
 
 abstract class AudioState {}
 
-class AudioStoppedState extends AudioState {}
+class AudioInitial extends AudioState {}
 
-class AudioPlayingState extends AudioState {}
+class AudioPickedState extends AudioState {
+  dynamic filePath;
+  AudioPlayer player;
 
-class AudioPauseState extends AudioState {}
+  AudioPickedState({required this.filePath, required this.player});
+}
 
-class AudioPermissionDeniedState extends AudioState {}
+class AudioPlayerSetState extends AudioState {
+  AudioPlayer player;
+
+  AudioPlayerSetState({required this.player});
+}

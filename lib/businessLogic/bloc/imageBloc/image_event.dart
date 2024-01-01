@@ -1,5 +1,15 @@
+import 'package:flutter/cupertino.dart';
+
 abstract class ImageEvent {}
 
-class PickImageEvent extends ImageEvent {}
+class PickImageEvent extends ImageEvent {
+  BuildContext context;
 
-class CaptureImageEvent extends ImageEvent {}
+  PickImageEvent({required this.context});
+}
+
+class CaptureImageEvent extends ImageEvent {
+  BuildContext context;
+
+  CaptureImageEvent({required this.context});
+}

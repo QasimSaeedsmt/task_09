@@ -10,6 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:task_09/businessLogic/bloc/videoBloc/video_event.dart';
 import 'package:task_09/businessLogic/bloc/videoBloc/video_state.dart';
 import 'package:task_09/constants/string_resource.dart';
+import 'package:task_09/constants/video_constants.dart';
 import 'package:task_09/utils/permission_utils.dart';
 import 'package:video_player/video_player.dart';
 
@@ -23,11 +24,11 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
     });
 
     on<CaptureVideoEvent>((event, emit) async {
-      await _pickVideo(ImageSource.camera);
+      await _captureVideo(event.context);
       emit(VideoPickedState());
     });
     on<PickVideoEvent>((event, emit) async {
-      await _pickVideo(ImageSource.gallery);
+      await _pickVideo(event.context);
       emit(VideoPickedState());
     });
 
@@ -64,15 +65,42 @@ Future<File> _getThumbnail(String videoPath) async {
 
 final permissions = PermissionUtils();
 
-Future<void> _pickVideo(ImageSource source) async {
+Future<void> _captureVideo(BuildContext context) async {
   if (_videoController != null) {
     _videoController?.dispose();
   }
-  Future<bool> videoPermission = PermissionUtils.requestVideoPermission();
+  Future<bool> videoPermission =
+      PermissionUtils.requestCaptureVideoPermission(context);
   if (await videoPermission) {
-    final pickedVideo = await ImagePicker().pickVideo(source: source);
+    final pickedVideo =
+        await ImagePicker().pickVideo(source: ImageSource.camera);
     if (pickedVideo != null) {
       final videoFile = File(pickedVideo.path);
+      VideoResources.VIDEO_LINKS.add(videoFile.path);
+
+      _videoController = VideoPlayerController.file(videoFile);
+
+      await _videoController!.initialize();
+      await _videoController!.setVolume(1.0);
+      await _videoController!.seekTo(Duration.zero);
+    } else {
+      throw StringResources.NO_PERMISSION_GRANTED;
+    }
+  }
+}
+
+Future<void> _pickVideo(BuildContext context) async {
+  if (_videoController != null) {
+    _videoController?.dispose();
+  }
+  Future<bool> videoPermission =
+      PermissionUtils.requestVideoPermission(context);
+  if (await videoPermission) {
+    final pickedVideo =
+        await ImagePicker().pickVideo(source: ImageSource.gallery);
+    if (pickedVideo != null) {
+      final videoFile = File(pickedVideo.path);
+      VideoResources.VIDEO_LINKS.add(videoFile.path);
 
       _videoController = VideoPlayerController.file(videoFile);
 

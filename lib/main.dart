@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task_09/businessLogic/bloc/audioBloc/audio_bloc.dart';
 import 'package:task_09/businessLogic/bloc/imageBloc/image_bloc.dart';
 import 'package:task_09/businessLogic/bloc/videoBloc/video_bloc.dart';
-import 'package:task_09/presentation/main_screen.dart';
+import 'package:task_09/presentation/screens/main_screen.dart';
 
+import 'businessLogic/bloc/audioBloc/audio_bloc.dart';
 import 'businessLogic/bloc/mainScreenBloc/main_screen_bloc.dart';
 
 void main() async {
@@ -49,3 +49,4 @@ class MyApp extends StatelessWidget {
         ));
   }
 }
+

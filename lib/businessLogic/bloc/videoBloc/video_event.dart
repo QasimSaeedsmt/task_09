@@ -1,10 +1,20 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
+
 abstract class VideoEvent {}
 
-class PickVideoEvent extends VideoEvent {}
+class PickVideoEvent extends VideoEvent {
+  BuildContext context;
 
-class CaptureVideoEvent extends VideoEvent {}
+  PickVideoEvent({required this.context});
+}
+
+class CaptureVideoEvent extends VideoEvent {
+  BuildContext context;
+
+  CaptureVideoEvent({required this.context});
+}
 
 class PlayVideoEvent extends VideoEvent {}
 

@@ -5,13 +5,13 @@ import 'package:task_09/constants/dimension_resource.dart';
 import 'package:task_09/constants/responsive_constants.dart';
 import 'package:task_09/constants/string_resource.dart';
 import 'package:task_09/extensions/build_context_extension.dart';
-import 'package:task_09/presentation/main_screen.dart';
-import 'package:task_09/presentation/video_screen.dart';
+import 'package:task_09/presentation/screens/main_screen.dart';
+import 'package:task_09/presentation/screens/video_screen.dart';
 import 'package:task_09/utils/drawer_widget.dart';
 
 import '../constants/icon_resources.dart';
-import '../presentation/audio_screen.dart';
-import '../presentation/image_screen.dart';
+import '../presentation/screens/audio_screen.dart';
+import '../presentation/screens/image_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -29,7 +29,7 @@ class CustomDrawer extends StatelessWidget {
         ),
         ListTile(
           onTap: () {
-            context.navigateTo(const MainScreen());
+            context.pushAndRemoveAll(const MainScreen());
           },
           leading: SvgPicture.asset(
             IconResources.YOUTUBE_ICON,
@@ -41,17 +41,17 @@ class CustomDrawer extends StatelessWidget {
         ),
         DrawerWidget(
           leadingIcon: Icons.image,
-          navigate: () => context.navigateTo(const Image2()),
+          navigate: () => context.pushAndRemoveAll(const ImageScreen()),
           screenName: StringResources.IMAGE_SCREEN,
         ),
         DrawerWidget(
           leadingIcon: CupertinoIcons.video_camera,
-          navigate: () => context.navigateTo(const VideoScreen()),
+          navigate: () => context.pushAndRemoveAll(const VideoScreen()),
           screenName: StringResources.VIDEO_SCREEN,
         ),
         DrawerWidget(
             leadingIcon: Icons.audiotrack,
-            navigate: () => context.navigateTo(const AudioScreen()),
+            navigate: () => context.pushAndRemoveAll(const AudioScreen()),
             screenName: StringResources.AUDIO_SCREEN),
       ],
     ));

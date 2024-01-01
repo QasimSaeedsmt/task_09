@@ -6,16 +6,16 @@ import 'package:task_09/businessLogic/bloc/imageBloc/image_state.dart';
 import 'package:task_09/constants/responsive_constants.dart';
 import 'package:task_09/constants/string_resource.dart';
 
-import '../utils/custom_drawer.dart';
+import '../../utils/custom_drawer.dart';
 
-class Image2 extends StatefulWidget {
-  const Image2({super.key});
+class ImageScreen extends StatefulWidget {
+  const ImageScreen({super.key});
 
   @override
-  State<Image2> createState() => _Image2State();
+  State<ImageScreen> createState() => _ImageScreenState();
 }
 
-class _Image2State extends State<Image2> {
+class _ImageScreenState extends State<ImageScreen> {
   late final ImageBloc imageBloc;
 
   @override
@@ -33,7 +33,7 @@ class _Image2State extends State<Image2> {
         actions: [
           IconButton(
             onPressed: () {
-              imageBloc.add(CaptureImageEvent());
+              imageBloc.add(CaptureImageEvent(context: context));
             },
             icon: const Icon(Icons.camera_alt),
           ),
@@ -42,7 +42,7 @@ class _Image2State extends State<Image2> {
           ),
           IconButton(
             onPressed: () {
-              imageBloc.add(PickImageEvent());
+              imageBloc.add(PickImageEvent(context: context));
             },
             icon: const Icon(Icons.image),
           ),
@@ -55,6 +55,17 @@ class _Image2State extends State<Image2> {
       body: BlocBuilder<ImageBloc, ImageState>(
         builder: (context, state) {
           if (state is ImagePickedState) {
+            final filePath = state.imagePath;
+            if (filePath != null) {
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Image.file(filePath),
+                  ],
+                ),
+              );
+            }
+          } else if (state is ImageCapturedState) {
             final filePath = state.imagePath;
             if (filePath != null) {
               return SingleChildScrollView(
