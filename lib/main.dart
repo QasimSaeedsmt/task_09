@@ -7,7 +7,7 @@ import 'package:task_09/presentation/screens/main_screen.dart';
 import 'businessLogic/bloc/audioBloc/audio_bloc.dart';
 import 'businessLogic/bloc/mainScreenBloc/main_screen_bloc.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(const MyApp());
@@ -35,7 +35,6 @@ class MyApp extends StatelessWidget {
           ),
         ],
         child: MaterialApp(
-          title: 'Flutter YouTube',
           theme: ThemeData(
             appBarTheme: const AppBarTheme(
               color: Colors.red,
@@ -49,4 +48,3 @@ class MyApp extends StatelessWidget {
         ));
   }
 }
-

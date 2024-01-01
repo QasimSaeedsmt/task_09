@@ -11,4 +11,7 @@ class ConstantsResources {
   static var HORIZONTAL_ASPECT_RATIO = 16 / 9;
   static const int INCREMENT = 1;
   static const int ZERO = 0;
+  static const double MINIMUM_VOLUME = 0.3;
+  static const double MAXIMUM_VOLUME = 2.0;
+  static const double DEFAULT_VOLUME = 1.0;
 }

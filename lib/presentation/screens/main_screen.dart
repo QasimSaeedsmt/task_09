@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:task_09/constants/dimension_resource.dart';
 import 'package:task_09/constants/icon_resources.dart';
 import 'package:task_09/constants/string_resource.dart';
-import 'package:task_09/constants/video_constants.dart';
+import 'package:task_09/constants/video_resources.dart';
 import 'package:task_09/utils/custom_drawer.dart';
 import 'package:video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -47,9 +47,7 @@ class _MainScreenState extends State<MainScreen> {
       } else {
         _videoControllers[i] = VideoPlayerController.networkUrl(
             Uri.parse(VideoResources.VIDEO_LINKS[i]))
-          ..initialize().then((_) {
-            setState(() {});
-          });
+          ..initialize().then((_) {});
       }
     }
   }
@@ -81,7 +79,9 @@ class _MainScreenState extends State<MainScreen> {
     if (inViewIndex != null) {
       _startVideo(inViewIndex);
     }
-    for (int index = 0; index < VideoResources.VIDEO_LINKS.length; index++) {
+    for (int index = ConstantsResources.ZERO;
+        index < VideoResources.VIDEO_LINKS.length;
+        index++) {
       if (index != inViewIndex) {
         _pauseVideo(index);
       }
@@ -233,7 +233,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           const SizedBox(height: DimensResource.D_8),
           Text(
-            'Video $videoIndex',
+            '${StringResources.VIDEO_LABEL} $videoIndex',
             style: const TextStyle(
               fontSize: DimensResource.D_18,
               fontWeight: FontWeight.bold,
@@ -241,7 +241,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           const SizedBox(height: DimensResource.D_4),
           const Text(
-            'Channel Name',
+            StringResources.CHANNEL_LABEL,
             style: TextStyle(
               fontSize: DimensResource.D_14,
               color: Colors.grey,
@@ -249,7 +249,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           const Divider(
             color: Colors.red,
-            height: 2.0,
+            height: DimensResource.D_2,
           ),
         ],
       ),

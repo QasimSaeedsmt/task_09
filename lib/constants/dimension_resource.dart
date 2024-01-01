@@ -1,13 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 class DimensResource {
-  static const int I_0 = 0;
-  static const int I_2 = 2;
 
-  static const int I_3 = 3;
-  static const int I_40 = 40;
-
-  static const int I_60 = 60;
 
   static const double D_0 = 0.0;
   static const double D_1 = 1.0;
@@ -44,6 +38,7 @@ class DimensResource {
   static const double D_65 = 65.0;
 
   static const double D_100 = 100.0;
+  static const double D_120 = 120.0;
 
   static const double D_160 = 160.0;
 }

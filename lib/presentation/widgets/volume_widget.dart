@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:task_09/constants/constants_resources.dart';
 
 import '../../constants/dimension_resource.dart';
 
@@ -22,9 +23,11 @@ class VolumeAndPlayRowWidget extends StatelessWidget {
               children: [
                 const Icon(Icons.volume_up),
                 SizedBox(
-                  width: 120,
+                  width: DimensResource.D_120,
                   child: Slider(
-                      value: snapshot.data ?? 1,
+                      min: ConstantsResources.MINIMUM_VOLUME,
+                      max: ConstantsResources.MAXIMUM_VOLUME,
+                      value: snapshot.data ?? ConstantsResources.DEFAULT_VOLUME,
                       onChanged: (value) {
                         _player.setVolume(value);
                       }),

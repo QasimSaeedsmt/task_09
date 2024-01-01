@@ -10,7 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:task_09/businessLogic/bloc/videoBloc/video_event.dart';
 import 'package:task_09/businessLogic/bloc/videoBloc/video_state.dart';
 import 'package:task_09/constants/string_resource.dart';
-import 'package:task_09/constants/video_constants.dart';
+import 'package:task_09/constants/video_resources.dart';
 import 'package:task_09/utils/permission_utils.dart';
 import 'package:video_player/video_player.dart';
 

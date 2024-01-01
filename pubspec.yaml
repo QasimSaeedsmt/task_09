@@ -44,10 +44,8 @@ dependencies:
   flutter_ffmpeg:
   permission_handler:
   flutter_svg:
-  equatable: ^2.0.5
   just_audio:
   audio_video_progress_bar:
-  chewie: ^1.7.4
   youtube_player_flutter: ^8.1.2
 
 
