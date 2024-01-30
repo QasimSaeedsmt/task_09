@@ -9,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:task_09/businessLogic/bloc/videoBloc/video_event.dart';
 import 'package:task_09/businessLogic/bloc/videoBloc/video_state.dart';
+import 'package:task_09/constants/dimension_resource.dart';
 import 'package:task_09/constants/string_resource.dart';
 import 'package:task_09/constants/video_resources.dart';
 import 'package:task_09/utils/permission_utils.dart';
@@ -81,7 +82,7 @@ Future<void> _captureVideo(BuildContext context) async {
       _videoController = VideoPlayerController.file(videoFile);
 
       await _videoController!.initialize();
-      await _videoController!.setVolume(1.0);
+      await _videoController!.setVolume(DimensResource.D_1);
       await _videoController!.seekTo(Duration.zero);
     } else {
       throw StringResources.NO_PERMISSION_GRANTED;
@@ -105,7 +106,7 @@ Future<void> _pickVideo(BuildContext context) async {
       _videoController = VideoPlayerController.file(videoFile);
 
       await _videoController!.initialize();
-      await _videoController!.setVolume(1.0);
+      await _videoController!.setVolume(DimensResource.D_1);
       await _videoController!.seekTo(Duration.zero);
     } else {
       throw StringResources.NO_PERMISSION_GRANTED;

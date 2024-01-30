@@ -221,7 +221,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Widget buildVideoPlayerItem(VideoPlayerController controller, int index) {
-    int videoIndex = index + 1;
+    int videoIndex = index + ConstantsResources.INCREMENT;
     return Padding(
       padding: const EdgeInsets.all(DimensResource.D_8),
       child: Column(
